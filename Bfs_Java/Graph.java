@@ -45,23 +45,18 @@ public class Graph{
       queue.add(s);
 
          //Now we will check if the queue size is empty or not
-      while (queue.size()!=0){
-          //if the queue size is not equal to 0  then will deque the visisted node as we  have marked the source node as
-          //visisted--->>
-          s = queue.poll(); // this poll() function is used to release the first element from the linked list-->>
-          System.out.println(s + "" );
-
-
-          // now we will add the adjacent nodes-->>>
-          //now we are going to make iterator
-          Iterator<Integer> i = adj[s].listIterator();
-          while(i.hasNext()){
-              int n = i.next();
-              if (!visited[n]) {
-                  visited[n] = true;
-                  queue.add(n);
+    while(queue.size()!=0){
+              int currentvertex = queue.poll();//to remove the first element-->>
+              System.out.println(currentvertex+ " ");
+              
+              
+              for(int neighbour : adj[currentvertex]){
+                  if(!visisted[neighbour]){
+                      visited[neighbour] = true ;
+                      queue.add(neighbour);
+                  }
               }
-
+              
 
           }
 
